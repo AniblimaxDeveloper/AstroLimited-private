@@ -12,17 +12,11 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
-      
-    - name: Generate Gradle Wrapper & Build
+    - name: Build with Gradle Wrapper
       run: |
         cd android
-        gradle wrapper
         chmod +x gradlew
-        ./gradlew assembleDebug
-        
+        ./gradlew :app:assembleDebug
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
