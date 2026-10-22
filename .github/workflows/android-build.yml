@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
@@ -19,7 +18,7 @@ jobs:
         cd android
         gradle wrapper --gradle-version 8.1
         
-    - name: Build APK
+    - name: Build APK with Gradle
       run: |
         cd android
         chmod +x gradlew
@@ -28,5 +27,5 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: AstroLimited-debug-apk
+        name: AstroLimited-APK
         path: android/app/build/outputs/apk/debug/app-debug.apk
